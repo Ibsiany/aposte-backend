@@ -11,11 +11,16 @@ export class UserRepository implements IUserRepository {
     }
   
     async create(
-        new_user: ICreateUserDTO,
-      ): Promise<User> {
-        const user = this.ormRepository.create(new_user);
-    
-        return this.ormRepository.save(user);
-      }
-    
+      new_user: ICreateUserDTO,
+    ): Promise<User> {
+      const user = this.ormRepository.create(new_user);
+  
+      return this.ormRepository.save(user);
+    }
+  
+    async findByEmail(
+      email: string,
+    ): Promise<User> {  
+      return this.ormRepository.findOne({where: {email}});
+    }
 }

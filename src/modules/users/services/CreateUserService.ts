@@ -1,9 +1,10 @@
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 import { User } from "../infra/typeorm/entities/User";
 import { hash } from 'bcryptjs';
-import { inject } from "tsyringe";
+import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../repositories/IUserRepository";
 
+@injectable()
 export class CreateUserService {
     constructor(
         @inject('UserRepository')
