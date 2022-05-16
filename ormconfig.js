@@ -4,7 +4,7 @@
       type: 'postgres',
       host: 'localhost',
       port: process.env.POSTGRESQL_PORT,
-      username: 'postgres',
+      username: 'aposte',
       password: process.env.POSTGRESQL_PASSWORD,
       database: 'aposte',
       synchronize: false,
