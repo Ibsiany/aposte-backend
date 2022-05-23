@@ -15,6 +15,12 @@ export class CreateUserService {
         if(!name || !email || !password){
             throw new Error('Missins params!');
         }
+        
+        const foundUser = await this.userRepository.findByEmail(email);
+        
+        if(foundUser){
+            throw new Error('User already exists!');
+        }
 
         const hashedPassword = await hash(password, 8);
 
