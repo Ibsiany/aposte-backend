@@ -13,7 +13,7 @@ interface IResponse {
 @injectable()
 export class SessionService {
   constructor(
-    @inject('UsersRepository')
+    @inject('UserRepository')
     private usersRepository: IUserRepository,
   ) {}
 
