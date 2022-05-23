@@ -2,16 +2,18 @@ import 'express-async-errors';
 import express, {
   NextFunction,
   Request,
+  RequestHandler,
   Response,
 } from 'express';
 import routes from '../http/routes/index';
 import cors from 'cors';
-
 const app = express();
 
 const originUrl ='http://localhost:3000';
 
 app.use(cors({ origin: originUrl }));
+
+app.use(express.json() as RequestHandler);
 
 app.use(routes);
 

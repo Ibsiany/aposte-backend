@@ -4,7 +4,7 @@ module.exports = [
       type: 'postgres',
       host: 'localhost',
       port: process.env.POSTGRESQL_PORT,
-      username: 'aposte',
+      username: 'postgres',
       password: process.env.POSTGRESQL_PASSWORD,
       database: 'postgres',
       synchronize: false,
