@@ -18,6 +18,12 @@ export class UserRepository implements IUserRepository {
       return this.ormRepository.save(user);
     }
   
+    async update(
+      user: User,
+    ): Promise<User> {
+      return this.ormRepository.save(user);
+    }
+  
     async findByEmail(
       email: string,
     ): Promise<User> {  
