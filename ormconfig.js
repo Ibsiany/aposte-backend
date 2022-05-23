@@ -1,4 +1,4 @@
-[
+module.exports = [
     {
       name: 'default',
       type: 'postgres',
@@ -6,7 +6,7 @@
       port: process.env.POSTGRESQL_PORT,
       username: 'postgres',
       password: process.env.POSTGRESQL_PASSWORD,
-      database: 'aposte',
+      database: 'postgres',
       synchronize: false,
       logging: false,
       migrationsTableName: 'migration',

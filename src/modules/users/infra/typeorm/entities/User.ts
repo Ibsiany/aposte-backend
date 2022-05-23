@@ -10,13 +10,13 @@ export class User{
 
     @UpdateDateColumn()
     updated_at: Date;
-  
+
     @Column()
     name: string;
-  
+
     @Column()
     email: string;
-  
+
     @Column()
     password: string;
 }
