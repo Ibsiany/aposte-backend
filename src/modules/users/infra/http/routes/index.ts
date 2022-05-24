@@ -12,8 +12,8 @@ const editUserController = new EditUserController();
 const sessionController = new SessionController();
 
 userRoutes.post('/create', createUserController.handle);
-userRoutes.post('/delete', deleteUserController.handle);
-userRoutes.post('/edit', editUserController.handle);
+userRoutes.delete('/delete', deleteUserController.handle);
+userRoutes.patch('/edit', editUserController.handle);
 userRoutes.post('/session', sessionController.handle);
 
 export default userRoutes;
