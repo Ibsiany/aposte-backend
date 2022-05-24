@@ -6,11 +6,10 @@ export class DeleteUserController {
     public async handle(request: Request, response: Response): Promise<Response> {
       const deleteUserService = container.resolve(DeleteUserService);
   
-      const { email, password } = request.body;
+      const { email } = request.params;
   
       await deleteUserService.execute(
         email,
-        password,
       );
   
       return response.status(204).send();

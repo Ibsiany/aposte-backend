@@ -10,16 +10,11 @@ export class DeleteUserService {
     private usersRepository: IUserRepository,
   ) {}
 
-  async execute(email, password): Promise<void> {
+  async execute(email): Promise<void> {
     const user = await this.usersRepository.findByEmail(email);
 
-    const comparePassword = await compare(
-      password,
-      user.password,
-    );
-
-    if (!comparePassword) {
-      throw new Error('Incorrect email/password');
+    if (!user) {
+      throw new Error('Incorrect email!');
     }
 
     await this.usersRepository.delete(user)

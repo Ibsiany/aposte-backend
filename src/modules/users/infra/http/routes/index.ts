@@ -12,7 +12,7 @@ const editUserController = new EditUserController();
 const sessionController = new SessionController();
 
 userRoutes.post('/create', createUserController.handle);
-userRoutes.delete('/delete', deleteUserController.handle);
+userRoutes.delete('/delete/:email', deleteUserController.handle);
 userRoutes.patch('/edit', editUserController.handle);
 userRoutes.post('/session', sessionController.handle);
 
