@@ -29,4 +29,10 @@ export class UserRepository implements IUserRepository {
     ): Promise<User> {  
       return this.ormRepository.findOne({where: {email}});
     }
+  
+    async delete(
+      user: User,
+    ): Promise<void> {  
+      await this.ormRepository.remove(user);
+    }
 }
