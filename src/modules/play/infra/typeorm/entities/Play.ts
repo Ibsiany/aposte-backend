@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
-@Entity('user')
-export class User{
+@Entity('play')
+export class Play{
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
@@ -12,14 +12,11 @@ export class User{
     updated_at: Date;
 
     @Column()
-    name: string;
+    team_a: string;
 
     @Column()
-    email: string;
+    team_b: string;
 
-    @Column()
-    password: string;
-
-    @Column({deafult: 0})
-    point: number;
+    @Column({nullable: true})
+    result: string;
 }
