@@ -22,11 +22,13 @@ export class CreateUserService {
             throw new Error('User already exists!');
         }
 
+        const hashedPassword = await hash(password);
+
         const user = await this.userRepository.create({
             name,
             email,
-            password,
-          });
+            password: hashedPassword,
+        });
       
       
 
