@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Bets } from "@modules/bets/infra/typeorm/entities/Bets";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('play')
 export class Play{
@@ -19,4 +20,10 @@ export class Play{
 
     @Column({nullable: true})
     result: string;
+
+    @OneToMany(
+    () => Bets,
+    bets => bets.play,
+    )
+    bets: Bets[];
 }

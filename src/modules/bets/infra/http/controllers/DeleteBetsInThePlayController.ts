@@ -1,14 +1,14 @@
-import { DeletePlayService } from "@modules/play/services/DeletePlayService";
+import { DeleteBetsInThePlayService } from "@modules/bets/services/DeleteBetsInThePlayService";
 import { Request, Response } from "express";
 import { container } from "tsyringe";
 
-export class DeletePlayController {
+export class DeleteBetsInThePlayController {
     public async handle(request: Request, response: Response): Promise<Response> {
-      const deletePlayService = container.resolve(DeletePlayService);
+      const deleteBetsInThePlayService = container.resolve(DeleteBetsInThePlayService);
   
       const { id } = request.params;
   
-      await deletePlayService.execute(
+      await deleteBetsInThePlayService.execute(
         id,
       );
   
