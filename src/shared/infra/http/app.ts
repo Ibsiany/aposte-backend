@@ -9,9 +9,7 @@ import routes from '../http/routes/index';
 import cors from 'cors';
 const app = express();
 
-const originUrl ='http://localhost:3000';
-
-app.use(cors({ origin: originUrl }));
+app.use(cors({ origin: '*' }));
 
 app.use(express.json() as RequestHandler);
 
