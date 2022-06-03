@@ -4,16 +4,16 @@ import { DeletePlayController } from '../controllers/DeletePlayController copy';
 import { EditPlayController } from '../controllers/EditPlayController';
 import { GetPlayController } from '../controllers/GetPlayController';
 
-const userRoutes = Router();
+const playRoutes = Router();
 
 const createPlayController = new CreatePlayController();
 const deletePlayController = new DeletePlayController();
 const editPlayController = new EditPlayController();
 const getPlayController = new GetPlayController();
 
-userRoutes.post('/create', createPlayController.handle);
-userRoutes.delete('/delete/:id', deletePlayController.handle);
-userRoutes.patch('/edit', editPlayController.handle);
-userRoutes.get('/', getPlayController.handle);
+playRoutes.post('/create', createPlayController.handle);
+playRoutes.delete('/delete/:id', deletePlayController.handle);
+playRoutes.patch('/edit', editPlayController.handle);
+playRoutes.get('/', getPlayController.handle);
 
-export default userRoutes;
+export default playRoutes;

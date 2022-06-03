@@ -8,7 +8,7 @@ import { EditBetsInTheScoreController } from '../controllers/EditBetsInTheScoreC
 import { GetBetsInThePlayController } from '../controllers/GetBetsInThePlayController copy';
 import { GetBetsInTheScoreController } from '../controllers/GetBetsInTheScoreController';
 
-const userRoutes = Router();
+const betsRoutes = Router();
 
 const createBetsInThePlayController = new CreateBetsInThePlayController();
 const deleteBetsInThePlayController = new DeleteBetsInThePlayController();
@@ -20,14 +20,14 @@ const deleteBetsInTheScoreController = new DeleteBetsInTheScoreController();
 const editBetsInTheScoreController = new EditBetsInTheScoreController();
 const getBetsInTheScoreController = new GetBetsInTheScoreController();
 
-userRoutes.post('/play/create', createBetsInThePlayController.handle);
-userRoutes.delete('/play/delete/:id', deleteBetsInThePlayController.handle);
-userRoutes.patch('/play/edit', editBetsInThePlayController.handle);
-userRoutes.get('/play', getBetsInThePlayController.handle);
+betsRoutes.post('/play/create', createBetsInThePlayController.handle);
+betsRoutes.delete('/play/delete/:id', deleteBetsInThePlayController.handle);
+betsRoutes.patch('/play/edit', editBetsInThePlayController.handle);
+betsRoutes.get('/play', getBetsInThePlayController.handle);
 
-userRoutes.post('/score/create', createBetsInTheScoreController.handle);
-userRoutes.delete('/score/delete/:id', deleteBetsInTheScoreController.handle);
-userRoutes.patch('/score/edit', editBetsInTheScoreController.handle);
-userRoutes.get('/score', getBetsInTheScoreController.handle);
+betsRoutes.post('/score/create', createBetsInTheScoreController.handle);
+betsRoutes.delete('/score/delete/:id', deleteBetsInTheScoreController.handle);
+betsRoutes.patch('/score/edit', editBetsInTheScoreController.handle);
+betsRoutes.get('/score', getBetsInTheScoreController.handle);
 
-export default userRoutes;
+export default betsRoutes;

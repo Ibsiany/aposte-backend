@@ -17,26 +17,21 @@ export class SessionService {
     private usersRepository: IUserRepository,
   ) {}
 
-  async execute(email, password): Promise<IResponse> {
+  async execute(email: string, password:string): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
       throw new Error('Incorrect email/password');
     }
 
-    const comparePassword = await compare(
-      password,
-      user.password,
-    );
-
-    if (!comparePassword) {
+    if (password !== user.password) {
       throw new Error('Incorrect email/password');
     }
 
     const token = sign({}, uuidV4(), {
         subject: user.id,
         expiresIn: 1,
-      })
+    })
 
     return {
       user,
