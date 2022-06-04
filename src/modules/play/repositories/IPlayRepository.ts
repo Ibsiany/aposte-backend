@@ -7,5 +7,6 @@ export interface IPlayRepository {
     update(user: Play): Promise<Play> 
     findById(id: string): Promise<Play> 
     findOnline(): Promise<Play[]> 
+    findResults(): Promise<Play[]> 
     delete(user: Play): Promise<void> 
 }

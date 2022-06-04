@@ -1,6 +1,6 @@
 import { ICreatePlayDTO } from "@modules/play/dtos/ICreatePlayDTO";
 import { IPlayRepository } from "@modules/play/repositories/IPlayRepository";
-import { getRepository, Repository, IsNull } from "typeorm";
+import { getRepository, Repository, IsNull, Not } from "typeorm";
 import { Play } from "../entities/Play";
 
 export class PlayRepository implements IPlayRepository {
@@ -33,6 +33,10 @@ export class PlayRepository implements IPlayRepository {
   
     async findOnline(): Promise<Play[]> {  
       return this.ormRepository.find({where: {result: IsNull()}});
+    }
+
+    async findResults(): Promise<Play[]> {  
+      return this.ormRepository.find({where: {result: Not(IsNull())}});
     }
   
     async delete(
