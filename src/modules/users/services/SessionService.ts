@@ -23,10 +23,8 @@ export class SessionService {
     if (!user) {
       throw new Error('Incorrect email/password');
     }
-
-    const comparePassword = await compare(password, user.password);
-
-    if (!comparePassword) {
+    
+    if (password !== user.password) {
       throw new Error('Incorrect email/password');
     }
 
