@@ -11,6 +11,15 @@ export class CreatePlayService {
     ){}
 
     async execute({team_a, team_b}:ICreatePlayDTO): Promise<Play>{
+        if(!team_a || !team_b){
+            throw new Error("Some of the parameters was undefined!")
+        }
 
+        const play = await this.playRepository.create({
+            team_a,
+            team_b
+        })
+
+        return play
     }
 }

@@ -10,6 +10,6 @@ export class GetPlayService {
   ) {}
 
   async execute(): Promise<Play[]> {
-   
+   return this.playRepository.findOnline()
   }
 }

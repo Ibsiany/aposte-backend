@@ -10,5 +10,17 @@ export class DeletePlayService {
   ) {}
 
   async execute(id: string): Promise<void> {
+    if(!id){
+      throw new Error("Missing ID!")
+    }
+
+    const play = await this.playRepository.findById(id)
+
+    if(!play){
+      throw new Error("Play does not exist!")
+    }
+
+    await this.playRepository.delete(play)
+
   }
 }
