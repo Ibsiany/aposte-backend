@@ -7,6 +7,7 @@ import { EditBetsInThePlayController } from '../controllers/EditBetsInThePlayCon
 import { EditBetsInTheScoreController } from '../controllers/EditBetsInTheScoreController';
 import { GetBetsInThePlayController } from '../controllers/GetBetsInThePlayController copy';
 import { GetBetsInTheScoreController } from '../controllers/GetBetsInTheScoreController';
+import { GetMyBetsController } from '../controllers/GetMyBetsController';
 
 const betsRoutes = Router();
 
@@ -20,6 +21,8 @@ const deleteBetsInTheScoreController = new DeleteBetsInTheScoreController();
 const editBetsInTheScoreController = new EditBetsInTheScoreController();
 const getBetsInTheScoreController = new GetBetsInTheScoreController();
 
+const getMyBetsController = new GetMyBetsController();
+
 betsRoutes.post('/play/create', createBetsInThePlayController.handle);
 betsRoutes.delete('/play/delete/:id', deleteBetsInThePlayController.handle);
 betsRoutes.patch('/play/edit', editBetsInThePlayController.handle);
@@ -29,5 +32,7 @@ betsRoutes.post('/score/create', createBetsInTheScoreController.handle);
 betsRoutes.delete('/score/delete/:id', deleteBetsInTheScoreController.handle);
 betsRoutes.patch('/score/edit', editBetsInTheScoreController.handle);
 betsRoutes.get('/score', getBetsInTheScoreController.handle);
+
+betsRoutes.get('/:id', getMyBetsController.handle);
 
 export default betsRoutes;

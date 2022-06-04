@@ -32,8 +32,8 @@ export class BetsRepository implements IBetsRepository {
 
   async findByUserId(
     user_id: string,
-  ): Promise<Bets> {  
-    return this.ormRepository.findOne({where: {user_id}});
+  ): Promise<Bets[]> {  
+    return this.ormRepository.find({where: {user_id}});
   }
 
   async delete(
