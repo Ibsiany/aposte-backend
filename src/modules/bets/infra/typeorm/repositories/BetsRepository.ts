@@ -1,6 +1,6 @@
 import { ICreateBetsDTO } from "@modules/bets/dtos/ICreateBetsDTO";
 import { IBetsRepository } from "@modules/bets/repositories/IBetsRepository";
-import { getRepository, Repository } from "typeorm";
+import { getRepository, IsNull, Repository } from "typeorm";
 import { Bets } from "../entities/Bets";
 
 export class BetsRepository implements IBetsRepository {
@@ -29,6 +29,17 @@ export class BetsRepository implements IBetsRepository {
   ): Promise<Bets> {  
     return this.ormRepository.findOne({where: {id}});
   }
+
+  
+  async findByType(type:string): Promise<Bets[]> {  
+    return this.ormRepository
+      .createQueryBuilder('bets')
+      .leftJoinAndSelect('bets.play', 'play')
+      .where('play.result IS NULL')
+      .andWhere('bets.type = :type', {type}) 
+      .getMany();
+  }
+
 
   async findByUserId(
     user_id: string,
