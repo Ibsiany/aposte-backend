@@ -12,5 +12,25 @@ export class CreateBetsInThePlayService {
 
     async execute({id_user, id_play, type, value }:ICreateBetsDTO): Promise<Bets>{
 
+        
+        if(!id_user || !id_play || !value){
+            throw new Error("Error in the creation of the bet!")
+        }
+
+        const foundBet = await this.betsRepository.findById(id_user)
+
+        if(foundBet){
+            throw new Error("the Bet already exist!")
+        }
+
+
+        const bets = await this.betsRepository.create({
+            id_user,
+            id_play,
+            type : "JOGO",
+            value
+        });
+
+        return bets
     }
 }
