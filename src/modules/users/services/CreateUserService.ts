@@ -1,6 +1,5 @@
 import { ICreateUserDTO } from "../dtos/ICreateUserDTO";
 import { User } from "../infra/typeorm/entities/User";
-import { hash } from 'bcryptjs';
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../repositories/IUserRepository";
 

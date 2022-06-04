@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { compare } from 'bcryptjs';
 import {v4 as uuidV4} from 'uuid';
 import { sign } from 'jsonwebtoken';
 import { User } from "../infra/typeorm/entities/User";
