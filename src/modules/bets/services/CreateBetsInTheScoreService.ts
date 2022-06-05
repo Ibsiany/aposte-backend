@@ -10,16 +10,18 @@ export class CreateBetsInTheScoreService {
         private betsRepository: IBetsRepository,
     ){}
 
-    async execute({id_user, id_play, type, value }:ICreateBetsDTO): Promise<Bets>{
+    async execute({id_user, id_play, value }:ICreateBetsDTO): Promise<Bets>{
         
         
-        if(!id_user || !id_play || !type || !value){
+        if(!id_user || !id_play || !value){
             throw new Error("Error in the creation of the bet!")
         }
 
-        const foundBet = await this.betsRepository.findById(id_user)
+        const foundBet = await this.betsRepository.findByUserId(id_user);
 
-        if(foundBet){
+        const findUser = foundBet.find(bets => bets.type === "PLACAR")
+
+        if(findUser){
             throw new Error("the Bet already exist!")
         }
 
