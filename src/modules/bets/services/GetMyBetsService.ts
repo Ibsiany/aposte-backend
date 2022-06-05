@@ -10,6 +10,6 @@ export class GetMyBetsService {
   ) {}
 
   async execute(id: string): Promise<Bets[]> {
-   
+   return this.betsRepository.findByUserId(id)
   }
 }

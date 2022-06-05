@@ -10,6 +10,6 @@ export class GetBetsInTheScoreService {
   ) {}
 
   async execute(): Promise<Bets[]> {
-   
+    return this.betsRepository.findByType("PLACAR")
   }
 }
