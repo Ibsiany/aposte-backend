@@ -30,6 +30,14 @@ export class PlayRepository implements IPlayRepository {
       return this.ormRepository.findOne({where: {id}});
     }
   
+    async findByIdPlay(
+      id: string,
+    ): Promise<Play> {  
+      return this.ormRepository.findOne({
+        where: { id },
+        relations: ['bets']
+      });
+    }
   
     async findOnline(): Promise<Play[]> {  
       return this.ormRepository.find({where: {result: IsNull()}});

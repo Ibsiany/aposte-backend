@@ -10,9 +10,7 @@ export class CreateBetsInTheScoreService {
         private betsRepository: IBetsRepository,
     ){}
 
-    async execute({id_user, id_play, value }:ICreateBetsDTO): Promise<Bets>{
-        
-        
+    async execute({id_user, id_play, value }:ICreateBetsDTO): Promise<Bets>{        
         if(!id_user || !id_play || !value){
             throw new Error("Error in the creation of the bet!")
         }
@@ -30,7 +28,7 @@ export class CreateBetsInTheScoreService {
             id_user,
             id_play,
             type : "PLACAR",
-            value
+            value: value.trim().replace(' ', '')
         });
 
         return bets
